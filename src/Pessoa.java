@@ -14,11 +14,15 @@ public class Pessoa extends Thread {
         return sexo;
     }
 
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
     @Override
     public void run() {
         banheiro.entrar(this);
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(getRandomNumber(1, 5));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } finally {
